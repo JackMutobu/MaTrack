@@ -1,0 +1,63 @@
+﻿<Page
+    x:Class="MaTrack.Shared.Pages.SignupNextPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MaTrack.Shared.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <Grid Background="{StaticResource GrayDarkBrush}" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <CommandBar Content="Register" FontWeight="Normal"></CommandBar>
+            <Grid Grid.Row="1" Margin="10" VerticalAlignment="Center" Padding="10,20" Background="{StaticResource VioletSecondaryBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Margin="0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="27*"/>
+                        <ColumnDefinition Width="293*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Border  HorizontalAlignment="Center"  Padding="10" Height="100" Width="100" CornerRadius="50" Background="{StaticResource WhiteCustomBrush}" Grid.Column="2" >
+                        <Image Source="/Assets/StoreLogo.png" Height="80" Stretch="Uniform">
+                        </Image>
+                    </Border>
+                    <Button Grid.Row="1" Margin="0,10" HorizontalAlignment="Center" Content="Modify" Width="120" Height="40" FontSize="13"   Background="{StaticResource VioletPrimaryBrush}" Foreground="{StaticResource WhiteCustomBrush}" Grid.Column="2" />
+                </Grid>
+                <StackPanel Grid.Row="1" Spacing="5">
+                    <TextBlock x:Name="txtError" Foreground="{StaticResource VioletPrimary}" />
+                    <ProgressBar x:Name="progressBar" Background="{StaticResource WhiteCustomBrush}" Foreground="{StaticResource VioletPrimaryBrush}"/>
+                    <TextBlock  Text="SACCO" Style="{StaticResource TextBlock1}"/>
+                    <TextBox x:Name="txtSacco" PlaceholderText="Madaraka SACCO" Style="{StaticResource TextBox1}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Spacing="5">
+                    <TextBlock Text="Password" Style="{StaticResource TextBlock1}"/>
+                    <PasswordBox x:Name="txtPassword" PlaceholderText="**********" Style="{StaticResource PasswordBox1}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="3" Spacing="5">
+                    <TextBlock Text="Confirm Password" Style="{StaticResource TextBlock1}"/>
+                    <PasswordBox x:Name="txtConfirmPassword" PlaceholderText="********" Style="{StaticResource PasswordBox1}"/>
+                </StackPanel>
+                <StackPanel  Spacing="10" Grid.Row="4" VerticalAlignment="Bottom">
+                    <Button x:Name="btnRegister" Margin="0,20,0,0" Content="Register"  Style="{StaticResource BtnPrimary}" />
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>

@@ -1,0 +1,66 @@
+﻿<Page
+    x:Class="MaTrack.Shared.Pages.OperationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MaTrack.Shared.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid Background="{StaticResource GrayDarkBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <CommandBar Content="Operations" FontWeight="Normal"/>
+        <Grid Grid.Row="1" Padding="5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button HorizontalAlignment="Stretch" Margin="2.5" Background="{StaticResource WhiteCustomBrush}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Border CornerRadius="30" Height="50" Width="50" Padding="10" Background="{StaticResource VioletPrimaryBrush}">
+                        <Path Data="M21.865021,0L32,9.6189575 21.865021,18.098999 21.865021,13.572998C21.865021,13.572998 4.3740082,9.052002 0,18.098999 0,15.838989 1.5900116,4.526001 21.865021,4.526001z" Stretch="Uniform" Fill="#FFFFFFFF" Width="28" Height="28" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"/>
+                    </Border>
+                    <TextBlock Grid.Row="1" Text="Departures" Foreground="{StaticResource MainDarkBrush}"/>
+                </Grid>
+            </Button>
+            <Button Grid.Column="1" HorizontalAlignment="Stretch" Margin="2.5" Background="{StaticResource WhiteCustomBrush}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Border CornerRadius="30" Height="50" Width="50" Padding="10" Background="{StaticResource VioletPrimaryBrush}">
+
+                        <Path Data="M12.99991,0L14.99991,0 14.99991,28.072775 25.55405,17.02802 26.999,18.409 14.013967,31.999005 0,18.437015 1.3909966,17.000005 12.99991,28.233893z" Stretch="Uniform" Fill="#FFFFFFFF" Width="68" Height="28"/>
+                    </Border>
+                    <TextBlock Grid.Row="1" Text="Arrivals" Foreground="{StaticResource MainDarkBrush}"/>
+                </Grid>
+            </Button>
+            <Button Grid.Column="2" HorizontalAlignment="Stretch" Margin="2.5" Background="{StaticResource WhiteCustomBrush}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Border CornerRadius="30" Height="50" Width="50" Padding="10" Background="{StaticResource VioletPrimaryBrush}">
+
+                        <Path Data="M2.0009785,1.9999937L2.0009785,29.999906 6.0009826,29.999906 6.0009826,9.9999693 12.000988,9.9999693 12.000988,29.999906 14.00099,29.999906 14.00099,5.9999812 20.000996,5.9999812 20.000996,29.999906 24.001,29.999906 24.001,1.9999937z M2.6669948,0L23.334008,0C24.806053,0,26.001002,1.194088,26.001002,2.667106L26.001002,29.334015C26.001002,30.805935,24.806053,32.000999,23.334008,32.000999L2.6669948,32.000999C1.1949475,32.000999,6.2229446E-08,30.805935,0,29.334015L0,2.667106C6.2229446E-08,1.1929894,1.1949475,0,2.6669948,0z" Stretch="Uniform" Fill="#FFFFFFFF" Width="68" Height="28"/>
+                    </Border>
+                    <TextBlock Grid.Row="1" Text="Report" Foreground="{StaticResource MainDarkBrush}"/>
+                </Grid>
+            </Button>
+        </Grid>
+    </Grid>
+</Page>

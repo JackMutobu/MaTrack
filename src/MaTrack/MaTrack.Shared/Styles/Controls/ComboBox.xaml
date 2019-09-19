@@ -1,0 +1,16 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MaTrack.Shared.Styles.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Application/Colors.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="ComboBox1" TargetType="ComboBox">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Background" Value="{StaticResource WhiteCustomBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource WhiteCustomBrush}"/>
+    </Style>
+</ResourceDictionary>
