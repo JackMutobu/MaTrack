@@ -13,7 +13,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <CommandBar Content="New vehicle" FontWeight="Normal"></CommandBar>
-        <Grid Grid.Row="1" Margin="10" VerticalAlignment="Center" Padding="10" Background="{StaticResource VioletSecondaryBrush}">
+
+        <Grid Grid.Row="1" Margin="10" VerticalAlignment="Center" Padding="10,20" Background="{StaticResource VioletSecondaryBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -27,39 +28,22 @@
                 <Path Data="M24.799996,18.100006C23.000008,18.100006 21.500008,19.400009 21.500008,20.900009 21.500008,22.5 23.000008,23.700012 24.799996,23.700012 26.599986,23.700012 28.099986,22.400009 28.099986,20.900009 28.099986,19.300003 26.599986,18.100006 24.799996,18.100006z M5.6999533,18.100006C3.8999651,18.100006 2.3999644,19.400009 2.3999644,20.900009 2.3999644,22.5 3.8999651,23.700012 5.6999533,23.700012 7.5000031,23.700012 9.0000036,22.400009 9.0000036,20.900009 8.899967,19.300003 7.5000031,18.100006 5.6999533,18.100006z M3.7999893,5.5L3.7999893,15.200012 25.899974,15.200012 25.899974,5.5z M8.399967,1.7000122C7.399966,1.7000122,7.5000031,4,8.399967,4L21.799996,4C23.19996,4,23.000008,1.7000122,21.799996,1.7000122z M0,0L30.299998,0 30.299998,5.4000092 30.299998,22.700012 30.299998,28.200012 28.00001,28.200012C28.00001,28.200012 28.099986,32 24.500008,32 20.799996,32 21.000008,28.200012 21.000008,28.200012L15.299993,28.200012 15.000006,28.200012 9.2999914,28.200012C9.2999914,28.200012 9.399967,32 5.79999,32 2.0999766,32 2.2999888,28.200012 2.2999888,28.200012L0,28.200012 0,22.700012 0,5.4000092z" Stretch="Uniform" Fill="#FFFFFFFF" Width="58" Height="58" />
             </Grid>
             <StackPanel Grid.Row="1" Spacing="5">
-                <TextBlock Text="Firstname" Foreground="{StaticResource WhiteCustomBrush}"/>
-                <TextBox PlaceholderText="Muliro" BorderThickness="1" Background="{StaticResource WhiteCustomBrush}" BorderBrush="{StaticResource WhiteCustomBrush}"/>
+                <TextBlock x:Name="txtError" Foreground="{StaticResource VioletPrimary}" />
+                <ProgressBar x:Name="progressBar" Background="{StaticResource WhiteCustomBrush}" Foreground="{StaticResource VioletPrimaryBrush}"/>
+                <TextBlock  Text="Name" Style="{StaticResource TextBlock1}"/>
+                <TextBox x:Name="txtName" PlaceholderText="Isuzu" Style="{StaticResource TextBox1}" />
             </StackPanel>
             <StackPanel Grid.Row="2" Spacing="5">
-                <TextBlock Text="Lastname" Foreground="{StaticResource WhiteCustomBrush}"/>
-                <TextBox PlaceholderText="Omwega" BorderThickness="1" Background="{StaticResource WhiteCustomBrush}" BorderBrush="{StaticResource WhiteCustomBrush}"/>
+                <TextBlock  Text="Plate" Style="{StaticResource TextBlock1}"/>
+                <TextBox x:Name="txtPlate" PlaceholderText="KH3232" Style="{StaticResource TextBox1}"/>
             </StackPanel>
             <StackPanel Grid.Row="3" Spacing="5">
-                <TextBlock Text="Address" Foreground="{StaticResource WhiteCustomBrush}"/>
-                <TextBox PlaceholderText="Nairobi" BorderThickness="1" Background="{StaticResource WhiteCustomBrush}" BorderBrush="{StaticResource WhiteCustomBrush}"/>
+                <TextBlock Text="Model" Style="{StaticResource TextBlock1}"/>
+                <TextBox x:Name="txtModel"  PlaceholderText="Model" Style="{StaticResource TextBox1}" />
             </StackPanel>
-            <StackPanel Grid.Row="4" Spacing="5">
-                <TextBlock Text="Phone" Foreground="{StaticResource WhiteCustomBrush}"/>
-                <TextBox PlaceholderText="0786408335" BorderThickness="1" Background="{StaticResource WhiteCustomBrush}" BorderBrush="{StaticResource WhiteCustomBrush}"/>
-            </StackPanel>
-            <Grid  Grid.Row="5" Background="{StaticResource VioletSecondaryBrush}">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Margin="0,0,0,8"  VerticalAlignment="Center" Text="Vehicle" Foreground="{StaticResource WhiteCustomBrush}"/>
-
-                <ComboBox HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Grid.Row="1"  PlaceholderText="Muiro" BorderThickness="1" Background="{StaticResource WhiteCustomBrush}" BorderBrush="{StaticResource WhiteCustomBrush}"/>
-                <Button Margin="2.5,0" Background="{StaticResource VioletPrimaryBrush}"  Grid.Row="1" Grid.Column="2">
-                    <Path Data="M13.55896,0L18.461914,0 18.461914,13.557983 32,13.557983 32,18.481018 18.5,18.481018 18.5,32 13.55896,32 13.55896,18.481018 0,18.481018 0,13.557983 13.55896,13.557983z" Stretch="Uniform" Fill="#FFFFFFFF"  Height="20" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"/>
-                </Button>
-            </Grid>
+            <StackPanel Grid.Row="5" Spacing="5"/>
             <StackPanel  Spacing="10" Grid.Row="6" VerticalAlignment="Bottom">
-                <Button x:Name="BtnAddDriver" Margin="0,20,0,0" Content="Save"  Width="250" Background="{StaticResource VioletPrimaryBrush}" Foreground="{StaticResource WhiteCustomBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <Button x:Name="BtnAddVehicle" Margin="0,20,0,0" Content="Save"  Style="{StaticResource BtnPrimary}"/>
             </StackPanel>
         </Grid>
     </Grid>

@@ -1,6 +1,4 @@
-﻿using MaTrack.Core.Dtos;
-using MaTrack.Core.Entities;
-using MaTrack.Shared.Helpers;
+﻿using MaTrack.Core.Entities;
 using MaTrack.Shared.Services;
 using Newtonsoft.Json;
 using System;
@@ -46,18 +44,29 @@ namespace MaTrack.Shared.Pages
                         UploadDate = DateTime.Now,
                         DoB = _admin.DoB
                     };
-                    var response = await _httpClientService.PostAsync(user, "Users/register");
+                    _admin.SACCO = txtSacco.Text;
+                    _admin.UploadDate = DateTime.Now;
+                    
+                    var response = await _httpClientService.PostAsync(_admin, "Admin/add");
                     if (response.IsSuccessStatusCode)
                     {
-                        _admin.SACCO = txtSacco.Text;
+                        response = await _httpClientService.PostAsync(user, "Users/register");
+                        if (response.IsSuccessStatusCode)
+                        {
+                            MessageDialog messageDialog = new MessageDialog($"{_admin.Firstname} {_admin.Lastname} has been registered as admin");
+                            await messageDialog.ShowAsync();
+                            this.Frame.Navigate(typeof(LoginPage));
+                        }
+                        else
+                        {
+                            txtError.Text = await response.Content.ReadAsStringAsync();
+                        }
                     }
-                    response = await _httpClientService.PostAsync(_admin, "Admin/add");
-                    if (response.IsSuccessStatusCode)
+                    else
                     {
-                        MessageDialog messageDialog = new MessageDialog($"{_admin.Firstname} {_admin.Lastname} has been registered as admin");
-                        await messageDialog.ShowAsync();
-                        this.Frame.Navigate(typeof(LoginPage));
+                        txtError.Text = await response.Content.ReadAsStringAsync();
                     }
+
                 }
                 else
                 {

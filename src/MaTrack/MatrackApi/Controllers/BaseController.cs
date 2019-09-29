@@ -24,24 +24,23 @@ namespace MatrackApi.Controllers
             return Ok(entities);
         }
         [HttpGet("get/{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById([FromQuery]int id)
         {
             var entity = await _repository.GetByIdAsync(id);
             return Ok(entity);
         }
-        
         [HttpPost("add")]
-        public virtual IActionResult Add(T entity)
-        {
+        public async virtual Task<IActionResult> Add([FromBody]T entity)
+        { 
             if (ModelState.IsValid)
             {
-                _repository.AddAsync(entity);
+                await _repository.AddAsync(entity);
                 return Ok(entity);
             }
             return BadRequest(ModelState);
         }
         [HttpPut("update")]
-        public virtual async Task<IActionResult> Update(T entity)
+        public virtual async Task<IActionResult> Update([FromBody]T entity)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +56,7 @@ namespace MatrackApi.Controllers
             return BadRequest(ModelState);
         }
         [HttpDelete("delete")]
-        public virtual async Task<IActionResult> Delete(T entity)
+        public virtual async Task<IActionResult> Delete([FromBody]T entity)
         {
             if (ModelState.IsValid)
             {

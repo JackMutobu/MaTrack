@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -37,7 +38,8 @@ namespace MatrackApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MaTrack API", Version = "v1" });
             });
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddControllersWithViews().AddNewtonsoftJson();
+            services.AddRazorPages();
             // configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
@@ -77,18 +79,19 @@ namespace MatrackApi
                     ValidateAudience = false
                 };
             });
-            var dbContext = services.BuildServiceProvider().GetService<MatrackApiDbContext>();
-            // configure DI for application services
-            services.AddScoped<IUserRepository>(s=> new UserRepository(dbContext));
+ // Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
+                               // configure DI for application services
+            services.AddScoped<IUserRepository,UserRepository>();
             services.AddScoped<IUserService,UserService>();
-            services.AddScoped<IDriverRepository, DriverRepository>(d => new DriverRepository(dbContext));
-            services.AddScoped<IAdminRepository, AdminRepository>(a => new AdminRepository(dbContext));
-            services.AddScoped<IRouteRepository, RouteRepository>(a => new RouteRepository(dbContext));
-            services.AddScoped<IStageRepository, StageRepository>(a => new StageRepository(dbContext));
+            services.AddScoped<IDriverRepository, DriverRepository>();
+            services.AddScoped<IAdminRepository, AdminRepository>();
+            services.AddScoped<IRouteRepository, RouteRepository>();
+            services.AddScoped<IStageRepository, StageRepository>();
+            services.AddScoped<IVehicleRepository, VehicleRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -103,21 +106,30 @@ namespace MatrackApi
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseCors(x => x
-             .AllowAnyOrigin()
-             .AllowAnyMethod()
-             .AllowAnyHeader());
+            
 
             app.UseSwagger();
-
-            app.UseAuthentication();
-           
-            app.UseMvc();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
                 c.RoutePrefix = string.Empty;
             });
+            app.UseRouting();
+
+            app.UseCors(x => x
+             .AllowAnyOrigin()
+             .AllowAnyMethod()
+             .AllowAnyHeader());
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+            });
+
+           
         }
     }
 }

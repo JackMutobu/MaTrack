@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MatrackApi.Migrations
 {
     [DbContext(typeof(MatrackApiDbContext))]
-    [Migration("20190919162314_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20190924164130_AddEnumStatus")]
+    partial class AddEnumStatus
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
+                .HasAnnotation("ProductVersion", "3.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -25,28 +25,38 @@ namespace MatrackApi.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address");
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DoB");
+                    b.Property<DateTime>("DoB")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Firstname")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Lastname")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProfileLink");
+                    b.Property<string>("ProfileLink")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SACCO");
+                    b.Property<string>("SACCO")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("StageId");
+                    b.Property<int?>("StageId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("UploadDate");
+                    b.Property<DateTime>("UploadDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -59,33 +69,44 @@ namespace MatrackApi.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address");
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DoB");
+                    b.Property<DateTime>("DoB")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DriverStatus")
+                        .HasColumnType("int");
 
                     b.Property<string>("Firstname")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Lastname")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProfileLink");
+                    b.Property<string>("ProfileLink")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Status");
+                    b.Property<DateTime>("UploadDate")
+                        .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("UploadDate");
-
-                    b.Property<int>("VehicleId");
+                    b.Property<int?>("VehicleId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("VehicleId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[VehicleId] IS NOT NULL");
 
                     b.ToTable("Drivers");
                 });
@@ -94,11 +115,14 @@ namespace MatrackApi.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("RouteName");
+                    b.Property<string>("RouteName")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UploadDate");
+                    b.Property<DateTime>("UploadDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -107,11 +131,14 @@ namespace MatrackApi.Migrations
 
             modelBuilder.Entity("MaTrack.Core.Entities.RouteStageEntity", b =>
                 {
-                    b.Property<int>("RouteId");
+                    b.Property<int>("RouteId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("StageId");
+                    b.Property<int>("StageId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("StagePosition");
+                    b.Property<int>("StagePosition")
+                        .HasColumnType("int");
 
                     b.HasKey("RouteId", "StageId");
 
@@ -124,13 +151,17 @@ namespace MatrackApi.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("GPSCoordinate");
+                    b.Property<string>("GPSCoordinate")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UploadDate");
+                    b.Property<DateTime>("UploadDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -141,29 +172,39 @@ namespace MatrackApi.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address");
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DoB");
+                    b.Property<DateTime>("DoB")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Firstname")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Lastname")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProfileLink");
+                    b.Property<string>("ProfileLink")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Role");
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("UploadDate");
+                    b.Property<DateTime>("UploadDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -174,17 +215,23 @@ namespace MatrackApi.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Model");
+                    b.Property<string>("Model")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NumPlate");
+                    b.Property<string>("NumPlate")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Status");
+                    b.Property<DateTime>("UploadDate")
+                        .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("UploadDate");
+                    b.Property<int>("VehicleStatus")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -193,9 +240,11 @@ namespace MatrackApi.Migrations
 
             modelBuilder.Entity("MaTrack.Core.Entities.VehicleRouteEntity", b =>
                 {
-                    b.Property<int>("RouteId");
+                    b.Property<int>("RouteId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("VeicleId");
+                    b.Property<int>("VeicleId")
+                        .HasColumnType("int");
 
                     b.HasKey("RouteId", "VeicleId");
 
@@ -215,8 +264,7 @@ namespace MatrackApi.Migrations
                 {
                     b.HasOne("MaTrack.Core.Entities.VehicleEntity", "Vehicle")
                         .WithOne("Driver")
-                        .HasForeignKey("MaTrack.Core.Entities.DriverEntity", "VehicleId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("MaTrack.Core.Entities.DriverEntity", "VehicleId");
                 });
 
             modelBuilder.Entity("MaTrack.Core.Entities.RouteStageEntity", b =>
@@ -224,12 +272,14 @@ namespace MatrackApi.Migrations
                     b.HasOne("MaTrack.Core.Entities.RouteEntity", "Route")
                         .WithMany("RouteStages")
                         .HasForeignKey("RouteId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("MaTrack.Core.Entities.StageEntity", "Stage")
                         .WithMany("RouteStages")
                         .HasForeignKey("StageId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MaTrack.Core.Entities.VehicleRouteEntity", b =>
@@ -237,12 +287,14 @@ namespace MatrackApi.Migrations
                     b.HasOne("MaTrack.Core.Entities.RouteEntity", "Route")
                         .WithMany("VehicleRoutes")
                         .HasForeignKey("RouteId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("MaTrack.Core.Entities.VehicleEntity", "Vehicle")
                         .WithMany("VehicleRoutes")
                         .HasForeignKey("VeicleId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

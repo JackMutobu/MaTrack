@@ -12,60 +12,63 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <CommandBar Content="New driver" FontWeight="Normal"></CommandBar>
-        
-        <Grid Grid.Row="1" Margin="10" VerticalAlignment="Center" Padding="10,30" Background="{StaticResource VioletSecondaryBrush}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid Margin="20">
-                <Path Data="M18.995386,8.0455501C19.287332,8.036226 19.572577,8.1545675 19.772075,8.3724382 20.001072,8.6214335 20.092071,8.9684274 20.013072,9.2984211L17.778101,18.596249C17.336106,20.429215,15.712128,21.709191,13.828152,21.709191L6.4952473,21.709191C5.6032588,21.709191,4.8242689,22.28018,4.5582724,23.130165L1.9853058,31.290013C1.8483076,31.723006 1.4473128,32 1.0163183,32 0.91531944,32 0.81332111,31.985001 0.71132231,31.953001 0.17632914,31.785004 -0.12166691,31.214014 0.047330856,30.679024L2.6202974,22.519177C3.1552906,20.820208,4.7122703,19.678229,6.4952473,19.678229L13.828152,19.678229C14.77014,19.678229,15.582129,19.03924,15.802127,18.121257L17.684102,10.297403 9.114213,11.630378C8.5612205,11.713376 8.0412272,11.337384 7.9542279,10.782394 7.8682295,10.229404 8.2482245,9.7094133 8.802217,9.6234152L18.870087,8.0574443C18.911836,8.0508196,18.953679,8.0468819,18.995386,8.0455501z M25.723285,3.3226543C25.823291,3.3189486 25.92567,3.3301324 26.027658,3.357873 26.569701,3.5049074 26.889644,4.0619169 26.743649,4.6039114L21.646747,23.492003C21.168788,25.260016,19.556814,26.495983,17.724812,26.495983L7.7539635,26.495983C7.1919609,26.495983 6.7379886,26.042002 6.7379884,25.479988 6.7379886,24.91901 7.1919609,24.465029 7.7539635,24.465029L17.724812,24.465029C18.639775,24.465029,19.44677,23.846985,19.685779,22.96197L24.781705,4.0738798C24.901118,3.6343522,25.289926,3.3387105,25.723285,3.3226543z M2.2693348,2.2282038C2.7423043,2.236694,3.1576533,2.5794871,3.2460394,3.0616284L4.9242505,12.233945C5.0252631,12.784964 4.660217,13.313982 4.1071472,13.414986 4.04614,13.426987 3.9841321,13.431987 3.9241247,13.431987 3.4430642,13.431987 3.0160105,13.088975 2.9259992,12.598958L1.2477884,3.4266415C1.1467757,2.8756223 1.5118213,2.346604 2.0638909,2.2456002 2.1330247,2.2326001 2.2017674,2.2269906 2.2693348,2.2282038z M19.473022,0C21.203029,0 22.605034,1.4020052 22.605034,3.1320114 22.605034,4.8620179 21.203029,6.2640231 19.473022,6.2640228 17.743016,6.2640231 16.341011,4.8620179 16.341011,3.1320114 16.341011,1.4020052 17.743016,0 19.473022,0z" Stretch="Uniform" Fill="#FFFFFFFF" Width="58" Height="58" />
-            </Grid>
-            <StackPanel Grid.Row="1" Spacing="5">
-                <TextBlock x:Name="txtError" Foreground="{StaticResource VioletPrimary}" />
-                <TextBlock  Text="Firstname" Style="{StaticResource TextBlock1}"/>
-                <TextBox x:Name="txtFirstname" PlaceholderText="Muliro" Style="{StaticResource TextBox1}" />
-            </StackPanel>
-            <StackPanel Grid.Row="2" Spacing="5">
-                <TextBlock  Text="Lastname" Style="{StaticResource TextBlock1}"/>
-                <TextBox x:Name="txtLastname" PlaceholderText="Omwega" Style="{StaticResource TextBox1}"/>
-            </StackPanel>
-            <StackPanel Grid.Row="3" Spacing="5">
-                <TextBlock Text="Date Of Birth" Style="{StaticResource TextBlock1}"/>
-                <TextBox x:Name="txtDob"  PlaceholderText="Day/Month/Year" Style="{StaticResource TextBox1}" />
-            </StackPanel>
-            <StackPanel Grid.Row="4" Spacing="5">
-                <TextBlock Text="Address" Style="{StaticResource TextBlock1}"/>
-                <TextBox x:Name="txtAddress" PlaceholderText="Nairobi" Style="{StaticResource TextBox1}"/>
-            </StackPanel>
-            <StackPanel Grid.Row="5" Spacing="5">
-                <TextBlock Text="Phone" Style="{StaticResource TextBlock1}"/>
-                <TextBox x:Name="txtPhone" PlaceholderText="0786408335" Style="{StaticResource TextBox1}"/>
-            </StackPanel>
-            <Grid  Grid.Row="5" Background="{StaticResource VioletSecondaryBrush}">
+        <ScrollViewer Grid.Row="1">
+            <Grid  Margin="10" VerticalAlignment="Center" Padding="10,0" Background="{StaticResource VioletSecondaryBrush}">
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock  Text="Vehicle"  Style="{StaticResource TextBlock1}"/>
+                <Grid Margin="5">
+                    <Path Data="M18.995386,8.0455501C19.287332,8.036226 19.572577,8.1545675 19.772075,8.3724382 20.001072,8.6214335 20.092071,8.9684274 20.013072,9.2984211L17.778101,18.596249C17.336106,20.429215,15.712128,21.709191,13.828152,21.709191L6.4952473,21.709191C5.6032588,21.709191,4.8242689,22.28018,4.5582724,23.130165L1.9853058,31.290013C1.8483076,31.723006 1.4473128,32 1.0163183,32 0.91531944,32 0.81332111,31.985001 0.71132231,31.953001 0.17632914,31.785004 -0.12166691,31.214014 0.047330856,30.679024L2.6202974,22.519177C3.1552906,20.820208,4.7122703,19.678229,6.4952473,19.678229L13.828152,19.678229C14.77014,19.678229,15.582129,19.03924,15.802127,18.121257L17.684102,10.297403 9.114213,11.630378C8.5612205,11.713376 8.0412272,11.337384 7.9542279,10.782394 7.8682295,10.229404 8.2482245,9.7094133 8.802217,9.6234152L18.870087,8.0574443C18.911836,8.0508196,18.953679,8.0468819,18.995386,8.0455501z M25.723285,3.3226543C25.823291,3.3189486 25.92567,3.3301324 26.027658,3.357873 26.569701,3.5049074 26.889644,4.0619169 26.743649,4.6039114L21.646747,23.492003C21.168788,25.260016,19.556814,26.495983,17.724812,26.495983L7.7539635,26.495983C7.1919609,26.495983 6.7379886,26.042002 6.7379884,25.479988 6.7379886,24.91901 7.1919609,24.465029 7.7539635,24.465029L17.724812,24.465029C18.639775,24.465029,19.44677,23.846985,19.685779,22.96197L24.781705,4.0738798C24.901118,3.6343522,25.289926,3.3387105,25.723285,3.3226543z M2.2693348,2.2282038C2.7423043,2.236694,3.1576533,2.5794871,3.2460394,3.0616284L4.9242505,12.233945C5.0252631,12.784964 4.660217,13.313982 4.1071472,13.414986 4.04614,13.426987 3.9841321,13.431987 3.9241247,13.431987 3.4430642,13.431987 3.0160105,13.088975 2.9259992,12.598958L1.2477884,3.4266415C1.1467757,2.8756223 1.5118213,2.346604 2.0638909,2.2456002 2.1330247,2.2326001 2.2017674,2.2269906 2.2693348,2.2282038z M19.473022,0C21.203029,0 22.605034,1.4020052 22.605034,3.1320114 22.605034,4.8620179 21.203029,6.2640231 19.473022,6.2640228 17.743016,6.2640231 16.341011,4.8620179 16.341011,3.1320114 16.341011,1.4020052 17.743016,0 19.473022,0z" Stretch="Uniform" Fill="#FFFFFFFF" Width="58" Height="58" />
+                </Grid>
+                <StackPanel Grid.Row="1" Spacing="5">
+                    <TextBlock x:Name="txtError" Foreground="{StaticResource VioletPrimary}" />
+                    <ProgressBar x:Name="progressBar" Background="{StaticResource WhiteCustomBrush}" Foreground="{StaticResource VioletPrimaryBrush}"/>
+                    <TextBlock  Text="Firstname" Style="{StaticResource TextBlock1}"/>
+                    <TextBox x:Name="txtFirstname" PlaceholderText="Muliro" Style="{StaticResource TextBox1}" />
+                </StackPanel>
+                <StackPanel Grid.Row="2" Spacing="5">
+                    <TextBlock  Text="Lastname" Style="{StaticResource TextBlock1}"/>
+                    <TextBox x:Name="txtLastname" PlaceholderText="Omwega" Style="{StaticResource TextBox1}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="3" Spacing="5">
+                    <TextBlock Text="Date Of Birth" Style="{StaticResource TextBlock1}"/>
+                    <TextBox x:Name="txtDob"  PlaceholderText="Day/Month/Year" Style="{StaticResource TextBox1}" />
+                </StackPanel>
+                <StackPanel Grid.Row="4" Spacing="5">
+                    <TextBlock Text="Address" Style="{StaticResource TextBlock1}"/>
+                    <TextBox x:Name="txtAddress" PlaceholderText="Nairobi" Style="{StaticResource TextBox1}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="5" Spacing="5">
+                    <TextBlock Text="Phone" Style="{StaticResource TextBlock1}"/>
+                    <TextBox x:Name="txtPhone" PlaceholderText="0786408335" Style="{StaticResource TextBox1}"/>
+                </StackPanel>
+                <Grid  Grid.Row="6" Background="{StaticResource VioletSecondaryBrush}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Text="Vehicle"  Style="{StaticResource TextBlock1}"/>
 
-                <ComboBox Grid.Row="1" PlaceholderText="KVC39293" Style="{StaticResource ComboBox1}"/>
-                <Button Margin="2.5,0" Height="40" Width="50" Style="{StaticResource BtnPrimary}"  Grid.Row="1" Grid.Column="2">
-                    <Path Data="M13.55896,0L18.461914,0 18.461914,13.557983 32,13.557983 32,18.481018 18.5,18.481018 18.5,32 13.55896,32 13.55896,18.481018 0,18.481018 0,13.557983 13.55896,13.557983z" Stretch="Uniform" Fill="#FFFFFFFF"  Height="20" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"/>
-                </Button>
+                    <ComboBox x:Name="comboVehicles" DisplayMemberPath="NumPlate" Grid.Row="1" PlaceholderText="KVC39293" Style="{StaticResource ComboBox1}"/>
+                    <Button x:Name="BtnAddVehicle" Margin="2.5,0" Height="40" Width="50" Style="{StaticResource BtnPrimary}"  Grid.Row="1" Grid.Column="2">
+                        <Path Data="M13.55896,0L18.461914,0 18.461914,13.557983 32,13.557983 32,18.481018 18.5,18.481018 18.5,32 13.55896,32 13.55896,18.481018 0,18.481018 0,13.557983 13.55896,13.557983z" Stretch="Uniform" Fill="#FFFFFFFF"  Height="20" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"/>
+                    </Button>
+                </Grid>
+                <StackPanel  Spacing="10" Grid.Row="7" Margin="0,0,0,5" VerticalAlignment="Bottom">
+                    <Button x:Name="BtnAddDriver" Margin="0,20,0,0" Content="Save"  Style="{StaticResource BtnPrimary}"/>
+                </StackPanel>
             </Grid>
-            <StackPanel  Spacing="10" Grid.Row="6" VerticalAlignment="Bottom">
-                <Button x:Name="BtnAddDriver" Margin="0,20,0,0" Content="Save"  Style="{StaticResource BtnPrimary}"/>
-            </StackPanel>
-        </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>

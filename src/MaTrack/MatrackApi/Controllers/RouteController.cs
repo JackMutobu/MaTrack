@@ -1,4 +1,5 @@
-﻿using MaTrack.Core.Entities;
+﻿using System.Threading.Tasks;
+using MaTrack.Core.Entities;
 using MaTrack.Shared.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,5 +14,15 @@ namespace MatrackApi.Controllers
         {
 
         }
+        [HttpPost("add")]
+        public async override Task<IActionResult> Add([FromBody] RouteEntity entity)
+        {
+            if (ModelState.IsValid)
+            {
+                await _repository.AddAsync(entity);
+                return Ok("Registered");
+            }
+            return BadRequest(ModelState);
+        }
     }
-}
+} 

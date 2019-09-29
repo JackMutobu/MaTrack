@@ -1,11 +1,12 @@
 ﻿using MaTrack.Core.Entities;
+using MatrackApi.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace MaTrack.Core.Data.Repositories
 {
     public class UserRepository : BaseRepository<UserEntity>, IUserRepository
     {
-        public UserRepository(DbContext dbContext) : base(dbContext)
+        public UserRepository(MatrackApiDbContext dbContext) : base(dbContext)
         {
         }
     }

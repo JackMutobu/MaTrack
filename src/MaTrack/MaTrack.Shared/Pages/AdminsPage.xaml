@@ -1,18 +1,19 @@
 ﻿<Page
-    x:Class="MaTrack.Shared.Pages.VehiclesPage"
+    x:Class="MaTrack.Shared.Pages.AdminsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MaTrack.Shared.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+
     <Grid Background="{StaticResource GrayDarkBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <CommandBar Content="Vehicles" FontWeight="Normal"/>
+        <CommandBar Content="Admin" FontWeight="Normal"/>
         <Grid Padding="5,10" Background="{StaticResource VioletSecondaryBrush}" Grid.Row="1" Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -23,21 +24,20 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBlock  VerticalAlignment="Center" Text="Search" Foreground="{StaticResource WhiteCustomBrush}"/>
-           
+            <TextBlock  VerticalAlignment="Center" Text="Search" Style="{StaticResource TextBlock1}"/>
             <TextBox  Grid.Row="1"  PlaceholderText="Muiro" Style="{StaticResource TextBox1}"/>
             <Button Margin="2.5,0" Background="{StaticResource VioletPrimaryBrush}" Height="40" Width="50" Style="{StaticResource BtnPrimary}"   Grid.Row="1" Grid.Column="1">
                 <Path Data="M11.170988,2.0000026C6.1139962,2.0000026 1.9999944,6.1120075 1.9999944,11.16603 1.9999944,16.219991 6.1139962,20.331996 11.170988,20.331996 16.227981,20.331996 20.341006,16.219991 20.341006,11.16603 20.341006,6.1120075 16.227981,2.0000026 11.170988,2.0000026z M11.170988,0C17.33003,0 22.341001,5.0089787 22.341001,11.16603 22.341001,13.76351 21.449155,16.156669 19.95551,18.055608L19.942527,18.071714 31.999898,30.615001 30.5589,32.001003 18.567029,19.525854 18.476871,19.605846C16.516895,21.303544 13.961804,22.332 11.170988,22.332 5.0119487,22.332 1.6168633E-07,17.32302 0,11.16603 1.6168633E-07,5.0089787 5.0119487,0 11.170988,0z" Stretch="Uniform" Fill="#FFFFFFFF"  Height="20" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"/>
             </Button>
-            <Button x:Name="btnVehicleAdd" Margin="2.5,0" Height="40" Width="50" Style="{StaticResource BtnPrimary}"  Grid.Row="1" Grid.Column="2">
+            <Button x:Name="btnAddAdmin" Margin="2.5,0" Height="40" Width="50" Style="{StaticResource BtnPrimary}"  Grid.Row="1" Grid.Column="2">
                 <Path Data="M13.55896,0L18.461914,0 18.461914,13.557983 32,13.557983 32,18.481018 18.5,18.481018 18.5,32 13.55896,32 13.55896,18.481018 0,18.481018 0,13.557983 13.55896,13.557983z" Stretch="Uniform" Fill="#FFFFFFFF"  Height="20" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"/>
             </Button>
         </Grid>
         <Grid Grid.Row="2" Padding="5" >
-            <ListView x:Name="listVehicles">
+            <ListView x:Name="listAdmins">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="5" Margin="2" Background="{StaticResource VioletPrimaryBrush}" Height="80">
+                        <Grid Padding="5" Margin="0,2" Background="{StaticResource VioletPrimaryBrush}" Height="100">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition/>
@@ -47,23 +47,22 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <Border VerticalAlignment="Center" Grid.RowSpan="2" HorizontalAlignment="Center" Height="60" Width="60" Padding="10" CornerRadius="30" Background="{StaticResource WhiteCustomBrush}">
-                                <Image Source="/Assets/StoreLogo.png" Height="50" Stretch="Uniform">
+                            <Border VerticalAlignment="Center" Grid.RowSpan="2" HorizontalAlignment="Center" Height="80" Width="80" Padding="10" CornerRadius="40" Background="{StaticResource WhiteCustomBrush}">
+                                <Image Source="/Assets/StoreLogo.png" Height="70" Stretch="Uniform">
                                 </Image>
                             </Border>
-                            <TextBlock Text="{Binding Name}" Grid.Column="1" Foreground="{StaticResource WhiteCustomBrush}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBlock Text="{Binding NumPlate}" Grid.Row="1" Grid.Column="1" Foreground="{StaticResource WhiteCustomBrush}" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center"/>
-                            <TextBlock  Grid.RowSpan="2" Grid.Column="2" Foreground="{StaticResource WhiteCustomBrush}" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <Run Text=""/>
+                            <TextBlock Grid.Column="1" FontSize="18" Foreground="{StaticResource WhiteCustomBrush}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Run Text="{Binding Firstname}" />
                                 <Run Text=" "/>
-                                <Run/>
+                                <Run Text="{Binding Lastname}"/>
                             </TextBlock>
-
+                            <TextBlock Text="{Binding Vehicle.NumPlate}" Grid.Row="1" Grid.Column="1"  FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource TextBlock1}"/>
+                            <TextBlock Text="{Binding Phone}" FontSize="18" Grid.Column="2" Foreground="{StaticResource WhiteCustomBrush}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding Vehicle.Status}" Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBlock1}" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-         
         </Grid>
     </Grid>
 </Page>

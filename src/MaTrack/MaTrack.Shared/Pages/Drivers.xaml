@@ -34,25 +34,35 @@
             </Button>
         </Grid>
         <Grid Grid.Row="2" Padding="5" >
-            <Grid Padding="5" Background="{StaticResource VioletPrimaryBrush}" Height="100">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Border VerticalAlignment="Center" Grid.RowSpan="2" HorizontalAlignment="Center" Height="80" Width="80" Padding="10" CornerRadius="40" Background="{StaticResource WhiteCustomBrush}">
-                    <Image Source="/Assets/StoreLogo.png" Height="70" Stretch="Uniform">
-                    </Image>
-                </Border>
-                <TextBlock Text="Jack Mutobu" Grid.Column="1" FontSize="18" Foreground="{StaticResource WhiteCustomBrush}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock Text="KCR20918" Grid.Row="1" Grid.Column="1"  FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource TextBlock1}"/>
-                <TextBlock Text="0786408335" FontSize="18" Grid.Column="2" Foreground="{StaticResource WhiteCustomBrush}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock Text="Active" Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBlock1}" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </Grid>
+            <ListView x:Name="listDrivers">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="5" Margin="0,2" Background="{StaticResource VioletPrimaryBrush}" Height="100">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Border VerticalAlignment="Center" Grid.RowSpan="2" HorizontalAlignment="Center" Height="80" Width="80" Padding="10" CornerRadius="40" Background="{StaticResource WhiteCustomBrush}">
+                                <Image Source="/Assets/StoreLogo.png" Height="70" Stretch="Uniform">
+                                </Image>
+                            </Border>
+                            <TextBlock Grid.Column="1" FontSize="18" Foreground="{StaticResource WhiteCustomBrush}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Run Text="{Binding Firstname}" />
+                                <Run Text=" "/>
+                                <Run Text="{Binding Lastname}"/>
+                            </TextBlock>
+                            <TextBlock Text="{Binding Vehicle.NumPlate}" Grid.Row="1" Grid.Column="1"  FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource TextBlock1}"/>
+                            <TextBlock Text="{Binding Phone}" FontSize="18" Grid.Column="2" Foreground="{StaticResource WhiteCustomBrush}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding Vehicle.Status}" Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBlock1}" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
     </Grid>
 </Page>

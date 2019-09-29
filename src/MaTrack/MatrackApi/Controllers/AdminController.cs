@@ -25,11 +25,11 @@ namespace MatrackApi.Controllers
         }
         [AllowAnonymous]
         [HttpPost("add")]
-        public override IActionResult Add(AdminEntity admin)
+        public override async Task<IActionResult> Add([FromBody]AdminEntity admin)
         {
             if(ModelState.IsValid)
             {
-                _repository.AddAsync(admin);
+                await _repository.AddAsync(admin);
                 return Ok(new
                 {
                     Id = admin.Id,

@@ -1,0 +1,137 @@
+﻿<Page
+    x:Class="MaTrack.Shared.Pages.AddRoutePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MaTrack.Shared.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ScrollViewer>
+        <Grid Background="{StaticResource GrayDarkBrush}" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <CommandBar Content="New route" FontWeight="Normal"></CommandBar>
+
+            <Grid Grid.Row="1" Margin="10" VerticalAlignment="Center" Padding="10,20" Background="{StaticResource VioletSecondaryBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Margin="0,5">
+                    <Path Data="M20.453003,24.042998C20.962373,24.043129 21.393962,24.416136 21.451147,24.928011 21.862136,28.606011 21.627142,31.005011 21.617143,31.105011 21.565145,31.618012 21.132156,32.000012 20.627172,32.000012 20.594172,32.000012 20.560174,31.998011 20.526175,31.994011 19.97919,31.94001 19.580202,31.45101 19.635201,30.904011 19.6372,30.88101 19.857194,28.598011 19.470205,25.150011 19.409207,24.603012 19.803195,24.110012 20.35018,24.048012 20.384741,24.044636 20.419045,24.042988 20.453003,24.042998z M16.290195,10.17615C16.643937,10.182377 16.982849,10.377766 17.156795,10.712593 18.395857,13.093701 19.402908,15.638816 20.147946,18.277935 20.297954,18.807959 19.990938,19.357985 19.459911,19.506991 19.369906,19.532992 19.278902,19.544993 19.188898,19.544993 18.754876,19.544993 18.354856,19.25898 18.231849,18.818961 17.522813,16.311846 16.565765,13.893737 15.389706,11.632634 15.135693,11.144613 15.325703,10.543585 15.812727,10.289574 15.965547,10.20957 16.129403,10.173318 16.290195,10.17615z M8.671452,0.16838167C8.9263101,0.16125627 9.1840429,0.25151314 9.3840294,0.44052751 10.878929,1.8526353 12.262836,3.3817521 13.497753,4.9838746 13.83373,5.4199079 13.752735,6.0449556 13.316765,6.3809813 13.135777,6.5209916 12.921791,6.5879968 12.709806,6.5879968 12.410826,6.5879968 12.116845,6.4549869 11.919858,6.1999672 10.747938,4.6798514 9.4350259,3.2287405 8.0161214,1.8886382 7.6161485,1.5106092 7.5981493,0.88056119 7.9761243,0.48053084 8.1646118,0.28001533 8.4165945,0.17550735 8.671452,0.16838167z M1.0342054,0.08475299C1.2889643,0.094627401 1.5402241,0.20187616 1.7277308,0.40437419 16.30128,16.170193 10.933078,30.748026 10.698069,31.361018 10.545063,31.757014 10.168049,32.000012 9.7680342,32.000012 9.6490297,32.000012 9.5280252,31.979012 9.4110208,31.934012 8.8970013,31.736014 8.6409917,31.160021 8.8379991,30.647026 9.0640075,30.051033 13.946192,16.557188 0.26467609,1.7563587 -0.10933781,1.3523629 -0.08333683,0.72237022 0.31967831,0.34937481 0.52118587,0.16237663 0.77944565,0.074877633 1.0342054,0.08475299z M13.765978,0.00087300969C13.988978,-0.0084504898 14.216758,0.056792097 14.409713,0.20204258 30.423654,12.318028 31.526679,30.197024 31.566657,30.952029 31.59467,31.501009 31.172675,31.969025 30.623666,31.998017 30.606637,31.999024 30.588632,32 30.570626,32 30.045663,32 29.605662,31.588013 29.576671,31.056002 29.567637,30.880007 28.459668,13.329028 13.207689,1.7910457 12.768664,1.4580378 12.681689,0.83404548 13.013719,0.39505107 13.200452,0.14810727 13.479264,0.012859163 13.765978,0.00087300969z" Stretch="Uniform" Fill="#FFFFFFFF" Width="58" Height="58" />
+                </Grid>
+                <StackPanel Grid.Row="1" Spacing="5">
+                    <TextBlock x:Name="txtError" Foreground="{StaticResource VioletPrimary}" />
+                    <ProgressBar x:Name="progressBar" Background="{StaticResource WhiteCustomBrush}" Foreground="{StaticResource VioletPrimaryBrush}"/>
+                    <TextBlock  Text="Name" Style="{StaticResource TextBlock1}"/>
+                    <TextBox x:Name="txtName" PlaceholderText="Isuzu" Style="{StaticResource TextBox1}" />
+                </StackPanel>
+                <Grid  Grid.Row="2" Background="{StaticResource VioletSecondaryBrush}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Text="Vehicle"  Style="{StaticResource TextBlock1}"/>
+
+                    <ComboBox x:Name="ComboVehicles" DisplayMemberPath="NumPlate" Grid.Row="1" PlaceholderText="KVC39293" Style="{StaticResource ComboBox1}"/>
+                    <Button x:Name="BtnAddVehicle" Margin="2.5,0" Height="40" Width="50" Style="{StaticResource BtnPrimary}"  Grid.Row="1" Grid.Column="1">
+                        <Path Data="M29.403992,0L32,3.5860286 8.3720093,21.479001 5.7740173,17.895017 5.776001,17.893002 0,9.9110087 3.5079956,7.2570179 9.2829895,15.23602z" Stretch="Uniform" Fill="#FFFFFFFF"  Height="20" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"/>
+                    </Button>
+                    <Button x:Name="BtnNewVehicle" Margin="2.5,0" Height="40" Width="50" Style="{StaticResource BtnPrimary}"  Grid.Row="1" Grid.Column="2">
+                        <Path Data="M13.55896,0L18.461914,0 18.461914,13.557983 32,13.557983 32,18.481018 18.5,18.481018 18.5,32 13.55896,32 13.55896,18.481018 0,18.481018 0,13.557983 13.55896,13.557983z" Stretch="Uniform" Fill="#FFFFFFFF"  Height="20" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"/>
+                    </Button>
+                </Grid>
+                <Grid  Grid.Row="3" Background="{StaticResource VioletSecondaryBrush}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Text="Stage"  Style="{StaticResource TextBlock1}"/>
+
+                    <ComboBox x:Name="ComboStages" DisplayMemberPath="Name" Grid.Row="1" PlaceholderText="Madaraka" Style="{StaticResource ComboBox1}"/>
+                    <Button x:Name="BtnAddStage" Margin="2.5,0" Height="40" Width="50" Style="{StaticResource BtnPrimary}"  Grid.Row="1" Grid.Column="1">
+                        <Path Data="M29.403992,0L32,3.5860286 8.3720093,21.479001 5.7740173,17.895017 5.776001,17.893002 0,9.9110087 3.5079956,7.2570179 9.2829895,15.23602z" Stretch="Uniform" Fill="#FFFFFFFF"  Height="20" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"/>
+                    </Button>
+                    <Button x:Name="BtnNewSatge" Margin="2.5,0" Height="40" Width="50" Style="{StaticResource BtnPrimary}"  Grid.Row="1" Grid.Column="2">
+                        <Path Data="M13.55896,0L18.461914,0 18.461914,13.557983 32,13.557983 32,18.481018 18.5,18.481018 18.5,32 13.55896,32 13.55896,18.481018 0,18.481018 0,13.557983 13.55896,13.557983z" Stretch="Uniform" Fill="#FFFFFFFF"  Height="20" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"/>
+                    </Button>
+                </Grid>
+                <StackPanel Grid.Row="5" Spacing="5"/>
+                <StackPanel  Spacing="10" Grid.Row="6" VerticalAlignment="Bottom">
+                    <Button x:Name="BtnAddRoute" Margin="0,20,0,0" Content="Save"  Style="{StaticResource BtnPrimary}"/>
+                </StackPanel>
+            </Grid>
+            <ScrollViewer Grid.Row="2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="250"/>
+                        <RowDefinition Height="250"/>
+
+                    </Grid.RowDefinitions>
+                    <ListView x:Name="listVehicles">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="5" Margin="2" Background="{StaticResource VioletPrimaryBrush}" Height="50">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Border VerticalAlignment="Center" Grid.RowSpan="2" HorizontalAlignment="Center" Height="60" Width="60" Padding="10" CornerRadius="30" Background="{StaticResource WhiteCustomBrush}">
+                                        <Image Source="/Assets/StoreLogo.png" Height="50" Stretch="Uniform">
+                                        </Image>
+                                    </Border>
+                                    <TextBlock Text="{Binding Name}" Grid.Column="1" Foreground="{StaticResource WhiteCustomBrush}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding NumPlate}" Grid.Row="1" Grid.Column="1" Foreground="{StaticResource WhiteCustomBrush}" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <ListView x:Name="listStages" Grid.Row="1">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="5" Margin="2" Background="{StaticResource VioletPrimaryBrush}" Height="50">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="{Binding Name}" Grid.Column="1" Foreground="{StaticResource WhiteCustomBrush}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding GPSCoordinate}" Grid.Row="1" Grid.Column="1" Foreground="{StaticResource WhiteCustomBrush}" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+    </ScrollViewer>
+</Page>

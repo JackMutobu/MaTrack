@@ -68,7 +68,7 @@ namespace MatrackApi.Migrations
                     Name = table.Column<string>(nullable: true),
                     Model = table.Column<string>(nullable: true),
                     NumPlate = table.Column<string>(nullable: true),
-                    Status = table.Column<int>(nullable: false)
+                    VehicleStatus = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -141,7 +141,7 @@ namespace MatrackApi.Migrations
                     Phone = table.Column<string>(nullable: false),
                     ProfileLink = table.Column<string>(nullable: true),
                     Status = table.Column<int>(nullable: false),
-                    VehicleId = table.Column<int>(nullable: false)
+                    VehicleId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -151,7 +151,7 @@ namespace MatrackApi.Migrations
                         column: x => x.VehicleId,
                         principalTable: "Vehicles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -187,7 +187,8 @@ namespace MatrackApi.Migrations
                 name: "IX_Drivers_VehicleId",
                 table: "Drivers",
                 column: "VehicleId",
-                unique: true);
+                unique: true,
+                filter: "[VehicleId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RouteStageEntity_StageId",

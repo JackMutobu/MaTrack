@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using MaTrack.Core.Dtos;
+using Newtonsoft.Json;
+using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -22,27 +14,40 @@ namespace MaTrack.Shared.Pages
     /// </summary>
     public sealed partial class DashboardPage : Page
     {
+        private UserAuthDto _userAuthDto;
+        private string _userAuthDtoJson;
         public DashboardPage()
         {
             this.InitializeComponent();
-            BtnDrivers.Click += BtnDrivers_Click;
-            BtnOperation.Click += BtnOperation_Click;
-            BtnVehicle.Click += BtnVehicle_Click;
+            btnDrivers.Click += BtnDrivers_Click;
+            btnOperation.Click += BtnOperation_Click;
+            btnVehicle.Click += BtnVehicle_Click;
+            btnRoutes.Click += BtnRoutes_Click;
         }
 
+        private void BtnRoutes_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(RoutesPage),_userAuthDtoJson);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            _userAuthDto = JsonConvert.DeserializeObject<UserAuthDto>(e.Parameter as string);
+            _userAuthDtoJson = JsonConvert.SerializeObject(_userAuthDto);
+        }
         private void BtnVehicle_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(VehiclesPage));
+            this.Frame.Navigate(typeof(VehiclesPage),_userAuthDtoJson);
         }
 
         private void BtnOperation_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            this.Frame.Navigate(typeof(OperationPage));
         }
 
         private void BtnDrivers_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Drivers));
+            this.Frame.Navigate(typeof(Drivers),_userAuthDtoJson);
         }
     }
 }

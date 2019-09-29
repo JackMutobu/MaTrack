@@ -1,11 +1,12 @@
 ﻿using MaTrack.Core.Entities;
+using MatrackApi.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace MaTrack.Core.Data.Repositories
 {
     public class AdminRepository : BaseRepository<AdminEntity>, IAdminRepository
     {
-        public AdminRepository(DbContext dbContext) : base(dbContext)
+        public AdminRepository(MatrackApiDbContext dbContext) : base(dbContext)
         {
         }
     }
