@@ -2,6 +2,7 @@
 using MaTrack.Core.Entities;
 using MaTrack.Shared.Data.Repositories;
 using MatrackApi.Data;
+using MatrackApi.Data.Repositories;
 using MatrackApi.Helpers;
 using MatrackApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -38,7 +39,11 @@ namespace MatrackApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MaTrack API", Version = "v1" });
             });
-            services.AddControllersWithViews().AddNewtonsoftJson();
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
             services.AddRazorPages();
             // configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSettings");
@@ -79,8 +84,6 @@ namespace MatrackApi
                     ValidateAudience = false
                 };
             });
- // Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
-                               // configure DI for application services
             services.AddScoped<IUserRepository,UserRepository>();
             services.AddScoped<IUserService,UserService>();
             services.AddScoped<IDriverRepository, DriverRepository>();
@@ -88,6 +91,7 @@ namespace MatrackApi
             services.AddScoped<IRouteRepository, RouteRepository>();
             services.AddScoped<IStageRepository, StageRepository>();
             services.AddScoped<IVehicleRepository, VehicleRepository>();
+            services.AddScoped<ITripRepository, TripRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

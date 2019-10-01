@@ -44,10 +44,12 @@ namespace MaTrack.Shared.Pages
             BtnAddRoute.Click += BtnAddRoute_Click;
             _vehicles = new List<VehicleEntity>();
             _stages = new List<StageEntity>();
+            progressBar.Visibility = Visibility.Collapsed;
         }
 
         private async void BtnAddRoute_Click(object sender, RoutedEventArgs e)
         {
+            progressBar.Visibility = Visibility.Visible;
             try
             {
                 var route = new RouteEntity
@@ -81,6 +83,7 @@ namespace MaTrack.Shared.Pages
             {
                 txtError.Text = ex.Message;
             }
+            progressBar.Visibility = Visibility.Collapsed;
         }
 
         private void BtnAddVehicle_Click(object sender, RoutedEventArgs e)

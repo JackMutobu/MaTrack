@@ -23,19 +23,19 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button HorizontalAlignment="Stretch" Margin="2.5" Background="{StaticResource WhiteCustomBrush}">
+            <Button x:Name="btnDeparture" HorizontalAlignment="Stretch" Margin="2.5" Background="{StaticResource WhiteCustomBrush}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Border CornerRadius="30" Height="50" Width="50" Padding="10" Background="{StaticResource VioletPrimaryBrush}">
+                    <Border CornerRadius="30" Height="50" Width="50" Padding="10" Background="{StaticResource VioletPrimaryBrush}" Margin="12,0,12,0" VerticalAlignment="Top">
                         <Path Data="M21.865021,0L32,9.6189575 21.865021,18.098999 21.865021,13.572998C21.865021,13.572998 4.3740082,9.052002 0,18.098999 0,15.838989 1.5900116,4.526001 21.865021,4.526001z" Stretch="Uniform" Fill="#FFFFFFFF" Width="28" Height="28" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"/>
                     </Border>
                     <TextBlock Grid.Row="1" Text="Departures" Foreground="{StaticResource MainDarkBrush}"/>
                 </Grid>
             </Button>
-            <Button Grid.Column="1" HorizontalAlignment="Stretch" Margin="2.5" Background="{StaticResource WhiteCustomBrush}">
+            <Button x:Name="btnArrival" Grid.Column="1" HorizontalAlignment="Stretch" Margin="2.5" Background="{StaticResource WhiteCustomBrush}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -48,7 +48,7 @@
                     <TextBlock Grid.Row="1" Text="Arrivals" Foreground="{StaticResource MainDarkBrush}"/>
                 </Grid>
             </Button>
-            <Button Grid.Column="2" HorizontalAlignment="Stretch" Margin="2.5" Background="{StaticResource WhiteCustomBrush}">
+            <Button x:Name="btnReport" Grid.Column="2" HorizontalAlignment="Stretch" Margin="2.5" Background="{StaticResource WhiteCustomBrush}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>

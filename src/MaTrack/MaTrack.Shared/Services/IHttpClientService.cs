@@ -11,5 +11,6 @@ namespace MaTrack.Shared.Services
         Task<string> GetAsync(string uri);
         void SetAuthorizationHeaderToken(HttpClient client, string token);
         Task<HttpResponseMessage> PostAsync(object content, string uri);
+        Task<HttpResponseMessage> PutAsync(object content, string uri);
     }
 }

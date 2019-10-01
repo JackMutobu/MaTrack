@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+﻿using MaTrack.Core.Dtos;
+using Newtonsoft.Json;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -22,9 +12,34 @@ namespace MaTrack.Shared.Pages
     /// </summary>
     public sealed partial class OperationPage : Page
     {
+        private UserAuthDto _userAuthDto;
+        private string _userAuthDtoJson;
+
         public OperationPage()
         {
             this.InitializeComponent();
+            btnArrival.Click += BtnArrival_Click;
+            btnDeparture.Click += BtnDeparture_Click;
+            btnReport.Click += BtnReport_Click;
+        }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            _userAuthDto = JsonConvert.DeserializeObject<UserAuthDto>(e.Parameter as string);
+            _userAuthDtoJson = JsonConvert.SerializeObject(_userAuthDto);
+        }
+        private void BtnReport_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(ReportPage),_userAuthDtoJson);
+        }
+
+        private void BtnDeparture_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(DepartPage), _userAuthDtoJson);
+        }
+
+        private void BtnArrival_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(ArrivalsPage), _userAuthDtoJson);
         }
     }
 }

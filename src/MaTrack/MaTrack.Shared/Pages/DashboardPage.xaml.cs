@@ -23,6 +23,12 @@ namespace MaTrack.Shared.Pages
             btnOperation.Click += BtnOperation_Click;
             btnVehicle.Click += BtnVehicle_Click;
             btnRoutes.Click += BtnRoutes_Click;
+            btnAdmin.Click += BtnAdmin_Click;
+        }
+
+        private void BtnAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(AdminsPage),_userAuthDtoJson);
         }
 
         private void BtnRoutes_Click(object sender, RoutedEventArgs e)
@@ -42,7 +48,7 @@ namespace MaTrack.Shared.Pages
 
         private void BtnOperation_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(OperationPage));
+            this.Frame.Navigate(typeof(OperationPage),_userAuthDtoJson);
         }
 
         private void BtnDrivers_Click(object sender, RoutedEventArgs e)

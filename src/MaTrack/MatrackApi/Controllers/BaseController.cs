@@ -44,7 +44,7 @@ namespace MatrackApi.Controllers
         {
             if (ModelState.IsValid)
             {
-                var entityExist = await _repository.GetByIdAsync(entity.Id);
+                var entityExist = _repository.GetById(entity.Id, null);
                 if (entityExist != null)
                 {
                     entityExist = entity;

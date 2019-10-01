@@ -40,7 +40,7 @@ namespace MaTrack.Core.Data.Repositories
         }
         public T GetById(int id, Func<IQueryable<T>, IIncludableQueryable<T, object>> includes = null)
         {
-            IQueryable<T> queryable = _dbContext.Set<T>();
+            IQueryable<T> queryable = _dbContext.Set<T>().AsNoTracking();
 
             if (includes != null)
             {

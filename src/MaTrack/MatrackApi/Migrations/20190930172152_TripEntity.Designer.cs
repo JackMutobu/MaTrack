@@ -4,14 +4,16 @@ using MatrackApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MatrackApi.Migrations
 {
     [DbContext(typeof(MatrackApiDbContext))]
-    partial class MatrackApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190930172152_TripEntity")]
+    partial class TripEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

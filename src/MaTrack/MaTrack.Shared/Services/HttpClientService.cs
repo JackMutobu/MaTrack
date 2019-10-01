@@ -80,5 +80,24 @@ namespace MaTrack.Shared.Services
                 }
             }
         }
+        public async Task<HttpResponseMessage> PutAsync(object content, string uri)
+        {
+            using (var request = new HttpRequestMessage(HttpMethod.Put, uri))
+            {
+                var json = JsonConvert.SerializeObject(content);
+                using (var stringContent = new StringContent(json, Encoding.UTF8, "application/json"))
+                {
+                    request.Content = stringContent;
+
+                    using (var response = await _httpClient
+                        .SendAsync(request, HttpCompletionOption.ResponseHeadersRead)
+                        .ConfigureAwait(false))
+                    {
+                        response.EnsureSuccessStatusCode();
+                        return response;
+                    }
+                }
+            }
+        }
     }
 }

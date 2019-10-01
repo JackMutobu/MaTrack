@@ -28,6 +28,7 @@ namespace MaTrack.Shared.Pages
             _httpClientService = new HttpClientService();
             BtnMyLocation.Click += BtnMyLocation_Click;
             BtnAddStage.Click += BtnAddStage_Click;
+            progressBar.Visibility = Visibility.Collapsed;
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -37,6 +38,7 @@ namespace MaTrack.Shared.Pages
         }
         private async void BtnAddStage_Click(object sender, RoutedEventArgs e)
         {
+            progressBar.Visibility = Visibility.Visible;
             var stage = new StageEntity
             {
                 Name = txtName.Text,
@@ -59,10 +61,12 @@ namespace MaTrack.Shared.Pages
                 }
             }
             txtError.Text = "Invalid input";
+            progressBar.Visibility = Visibility.Collapsed;
         }
 
         private async void BtnMyLocation_Click(object sender, RoutedEventArgs e)
         {
+            progressBar.Visibility = Visibility.Visible;
             try
             {
                 var request = new GeolocationRequest(GeolocationAccuracy.High);
@@ -89,6 +93,7 @@ namespace MaTrack.Shared.Pages
             {
                 // Unable to get location
             }
+            progressBar.Visibility = Visibility.Collapsed;
         }
 
 

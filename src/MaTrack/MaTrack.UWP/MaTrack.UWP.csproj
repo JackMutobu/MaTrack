@@ -16,6 +16,9 @@
       <Version>12.0.2</Version>
     </PackageReference>
     <PackageReference Include="Uno.Core" Version="1.28.0" />
+    <PackageReference Include="Uno.UI">
+      <Version>2.0.237-dev.2806</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Essentials">
       <Version>1.3.1</Version>
     </PackageReference>

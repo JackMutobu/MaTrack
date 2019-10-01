@@ -12,6 +12,7 @@ namespace MatrackApi.Data
         public DbSet<RouteEntity> Routes { get; set; }
         public DbSet<VehicleEntity> Vehicles { get; set; }
         public DbSet<UserEntity> Users { get; set; }
+        public DbSet<TripEntity> Trips { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
