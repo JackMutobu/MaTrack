@@ -16,8 +16,11 @@ namespace MaTrack.Shared.Services
         public HttpClientService()
         {
 #if __ANDROID__
-
-            _httpClient = new HttpClient();
+            _httpClientHandler = new Xamarin.Android.Net.AndroidClientHandler()
+            {
+                ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; }
+            };
+            _httpClient = new HttpClient(_httpClientHandler);
 #else
             _httpClientHandler = new HttpClientHandler()
             {
@@ -26,7 +29,10 @@ namespace MaTrack.Shared.Services
             _httpClient = new HttpClient(_httpClientHandler);
 #endif
             var localUri = new Uri("https://localhost:44389/api/");
-            _httpClient.BaseAddress = localUri;
+            var onlineUri = new Uri("http://afrisofttech-001-site31.btempurl.com/api/");
+            var androidEmulator = new Uri("http://127.0.0.1:6950/api/");
+            var localNetwork = new Uri("https://192.168.100.6:44389/api/");
+            _httpClient.BaseAddress = onlineUri;
         }
         public HttpClient HttpClient
         {

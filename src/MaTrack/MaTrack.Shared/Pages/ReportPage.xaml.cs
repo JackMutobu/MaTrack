@@ -40,12 +40,12 @@ namespace MaTrack.Shared.Pages
 
         private void BtnYesterday_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            listReports.ItemsSource = _trips.Where(t => t.UploadDate == DateTime.Today.Subtract(TimeSpan.FromHours(24)));
+            listReports.ItemsSource = _trips.Where(t => t.UploadDate == DateTime.Now.Date.Subtract(TimeSpan.FromHours(24)));
         }
 
         private void BtnToday_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            listReports.ItemsSource = _trips.Where(t => t.UploadDate == DateTime.Today);
+            listReports.ItemsSource = _trips.Where(t => t.UploadDate == DateTime.Now.Date);
         }
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)

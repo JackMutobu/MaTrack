@@ -1,14 +1,18 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:toolkit="using:Uno.UI.Toolkit"
-	xmlns:xamarin="http://nventive.com/xamarin"
-	xmlns:wasm="http://nventive.com/wasm"
-	xmlns:android="http://nventive.com/android"
-	xmlns:ios="http://nventive.com/ios"
-	mc:Ignorable="ios android xamarin wasm">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+					xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:toolkit="using:Uno.UI.Toolkit"
+					xmlns:xamarin="http://nventive.com/xamarin"
+					xmlns:wasm="http://nventive.com/wasm"
+					xmlns:android="http://nventive.com/android"
+					xmlns:ios="http://nventive.com/ios"
+					mc:Ignorable="ios android xamarin wasm">
+    <!-- 
+		Find the latest styles here:
+		C:\Program Files (x86)\Windows Kits\10\DesignTime\CommonConfiguration\Neutral\UAP\10.0.14393.0\Generic\generic.xaml
+	-->
+
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Application/Colors.xaml" />
     </ResourceDictionary.MergedDictionaries>
@@ -22,7 +26,7 @@
         <Setter Property="Background"
 				Value="{StaticResource VioletSecondaryBrush}" />
         <Setter Property="Foreground"
-				Value="{StaticResource Color02Brush}" />
+				Value="{StaticResource WhiteCustom}" />
         <Setter Property="FontWeight"
 				Value="Bold" />
         <Setter Property="FontSize"
@@ -51,7 +55,7 @@
 
         <!-- BACK BUTTON -->
         <Setter Property="toolkit:CommandBarExtensions.BackButtonForeground"
-				Value="{StaticResource WhiteCustomBrush}" />
+				Value="{StaticResource Color02Brush}" />
 
         <ios:Setter Property="Template">
             <Setter.Value>
@@ -158,8 +162,11 @@
 				   TargetType="CommandBar">
 
         <!--Android-specific property-->
-        <android:Setter Property="(toolkit:UIElementExtensions.Elevation)"
+        <Setter Property="(toolkit:UIElementExtensions.Elevation)"
 						Value="4" />
+
+        <Setter Property="Height"
+				Value="{StaticResource CommandBarHeight}" />
 
         <Setter Property="Template">
             <Setter.Value>

@@ -59,10 +59,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client">
+      <Version>3.0.0</Version>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.2</Version>
     </PackageReference>
-    <PackageReference Include="Uno.UI" Version="2.0.237-dev.2806" />
+    <PackageReference Include="Uno.Core">
+      <Version>1.29.0-dev.93</Version>
+    </PackageReference>
+    <PackageReference Include="Uno.UI" Version="2.0.316-dev.3142" />
     <PackageReference Include="Uno.UniversalImageLoader" Version="1.9.32" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.1" />
@@ -103,6 +109,9 @@
       <Project>{db4c8521-ba94-4b3d-aa26-742b7b3578cd}</Project>
       <Name>MaTrack.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Constants\" />
   </ItemGroup>
   <Import Project="..\MaTrack.Shared\MaTrack.Shared.projitems" Label="Shared" Condition="Exists('..\MaTrack.Shared\MaTrack.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

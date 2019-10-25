@@ -20,5 +20,7 @@ namespace MaTrack.Core.Entities
         public int VehicleId { get; set; }
         public VehicleEntity Vehicle { get; set; } 
         public decimal Revenue { get; set; }
+        public int? DepartureStageId { get; set; }
+        public StageEntity DepartureStage { get; set; }
     }
 }

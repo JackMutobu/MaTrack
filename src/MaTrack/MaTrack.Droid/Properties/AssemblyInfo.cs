@@ -15,6 +15,9 @@ using Android.App;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
+[assembly: MetaData("com.google.android.maps.v2.API_KEY", Value = "AIzaSyAPbw5REd81rKh2BE3XbLoazyzKU859qHA")]
+[assembly: UsesPermission("com.myapp.permission.MAPS_RECEIVE")]
+[assembly: Permission(Name = "com.myapp.permission.MAPS_RECEIVE", ProtectionLevel = Android.Content.PM.Protection.Signature)]
 
 // Version information for an assembly consists of the following four values:
 //

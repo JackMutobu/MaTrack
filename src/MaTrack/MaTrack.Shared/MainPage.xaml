@@ -5,7 +5,8 @@
     xmlns:local="using:MaTrack"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    xmlns:android="http://nventive.com/android"
+    mc:Ignorable="d android">
 
     <Grid Background="{StaticResource WhiteCustomBrush}" >
         <Grid.RowDefinitions>
@@ -28,13 +29,51 @@
             </Grid.RowDefinitions>
             <StackPanel Spacing="8">
                 <TextBlock  VerticalAlignment="Center"  Text="From" Style="{StaticResource TextBlock1}"/>
-                <TextBox  Grid.Row="1"  PlaceholderText="My location" Style="{StaticResource TextBox1}"/>
+                <AutoSuggestBox x:Name="LocationFrom" SuggestionChosen="AutoSuggestBoxFrom_SuggestionChosen" TextChanged="AutoSuggestBoxFrom_TextChanged"  Grid.Row="1"  PlaceholderText="My location" />
             </StackPanel>
             <StackPanel Grid.Row="1" Spacing="8">
                 <TextBlock  VerticalAlignment="Center"  Text="To" Style="{StaticResource TextBlock1}"/>
-                <TextBox  Grid.Row="1"  PlaceholderText="Nairobi" Style="{StaticResource TextBox1}"/>
+                <AutoSuggestBox x:Name="LocationTo" SuggestionChosen="AutoSuggestBoxTo_SuggestionChosen" TextChanged="AutoSuggestBoxTo_TextChanged" Grid.Row="1"  PlaceholderText="Nairobi" />
             </StackPanel>
-          
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" Spacing="8">
+                <android:Button Width="100" Click="BtnUser_Click" Style="{StaticResource BtnPrimary}" Margin="0,10,0,0" Content="Login"  />
+                <Button Click="BtnSearch_Click" Width="200"  Style="{StaticResource BtnPrimary}" Margin="0,10,0,0" Content="Search"  />
+            </StackPanel>
+
+
         </Grid>
+        <StackPanel Grid.Row="2" Padding="10">
+            <ListView x:Name="listResponse">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="5" Grid.ColumnSpan="2" Margin="0,2" Background="{StaticResource VioletPrimaryBrush}" Height="100">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Border VerticalAlignment="Center" Grid.RowSpan="2" HorizontalAlignment="Center" Height="80" Width="80" Padding="10" CornerRadius="40" Background="{StaticResource WhiteCustomBrush}">
+                                <Image Source="/Assets/StoreLogo.png" Height="70" Stretch="Uniform">
+                                </Image>
+                            </Border>
+                            <TextBlock Grid.Column="1" FontSize="16" Foreground="{StaticResource WhiteCustomBrush}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Run Text="{Binding Driver.Firstname,FallbackValue=Jack}" />
+                                <Run Text=" "/>
+                                <Run Text="{Binding Driver.Lastname,FallbackValue=Mutobu}"/>
+                            </TextBlock>
+                            <TextBlock Text="{Binding Vehicle.NumPlate,FallbackValue=KH3443C}" Grid.Row="1" Grid.Column="1"  FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource TextBlock1}"/>
+                            <TextBlock Text="{Binding LocationDto.Name}" FontSize="14" Grid.Column="2" Foreground="{StaticResource WhiteCustomBrush}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding Distance}" Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBlock1}" VerticalAlignment="Center" FontWeight="Light" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+           
+        </StackPanel>
     </Grid>
 </Page>

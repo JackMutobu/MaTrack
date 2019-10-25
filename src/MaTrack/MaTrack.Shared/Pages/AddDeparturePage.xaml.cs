@@ -45,7 +45,7 @@ namespace MaTrack.Shared.Pages
                 LastTripStateTime = DateTime.Now,
                 NumberOfTrip = 0,
                 TripState = Core.Enumerations.TripState.Departure,
-                UploadDate = DateTime.Today,
+                UploadDate = DateTime.Now,
                 VehicleId = _selectedVehicle.Id,               
             };
             var response = await _httpClientService.PostAsync(trip, "Trip/add");
@@ -81,7 +81,7 @@ namespace MaTrack.Shared.Pages
             _userAuthDtoJson = e.Parameter as string;
             try
             {
-                _httpClientService.SetAuthorizationHeaderToken(_httpClientService.HttpClient, _userAuthDto.Token);
+                _httpClientService.SetAuthorizationHeaderToken(_httpClientService.HttpClient, _userAuthDto.Token);               
                 _vehicles = JsonConvert.DeserializeObject<List<VehicleEntity>>(await _httpClientService.GetAsync("Vehicles/getallwith"));
                 ComboVehicles.ItemsSource = _vehicles;
                 _drivers = _vehicles.Select(v => v.Driver).ToList();

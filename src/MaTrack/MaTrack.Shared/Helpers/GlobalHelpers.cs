@@ -1,9 +1,17 @@
-﻿using System;
+﻿using MaTrack.Shared.Services;
+using Microsoft.AspNetCore.SignalR.Client;
+using System;
 
 namespace MaTrack.Shared.Helpers
 {
-    public static class GlobalHelpers
+    public class GlobalHelpers
     {
+        private ISignalRClientService _signalRClientService;
+        public GlobalHelpers()
+        {
+            _signalRClientService = new SignalRClientService();
+           HubConnection = _signalRClientService.HubConnection;
+        }
         public static DateTime GetDate(string date)
         {
             DateTime d = default;
@@ -22,5 +30,6 @@ namespace MaTrack.Shared.Helpers
             }
             return d;
         }
+        public static HubConnection HubConnection { get; set; }
     }
 }

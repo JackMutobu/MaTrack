@@ -24,10 +24,19 @@
     <Compile Include="$(MSBuildThisFileDirectory)Dialogs\DepartureDialog.xaml.cs">
       <DependentUpon>DepartureDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Dialogs\MapsDialog.xaml.cs">
+      <DependentUpon>MapsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Dialogs\SetStageDialog.xaml.cs">
+      <DependentUpon>SetStageDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\GlobalHelpers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\GooglePlace.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\GooglePlaceAutoCompletePrediction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\MatrackPlace.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\AddDeparturePage.xaml.cs">
       <DependentUpon>$fileinputname$.xaml</DependentUpon>
     </Compile>
@@ -76,8 +85,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\VehiclesPage.xaml.cs">
       <DependentUpon>$fileinputname$.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Services\GoogleMapsServices.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\HttpClientService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\IGoogleMapsApiService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IHttpClientService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\ISignalRClientService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\PlacesService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\SignalRClientService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Dialogs\CalenderDialog.xaml">
@@ -85,6 +99,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Dialogs\DepartureDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Dialogs\MapsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Dialogs\SetStageDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

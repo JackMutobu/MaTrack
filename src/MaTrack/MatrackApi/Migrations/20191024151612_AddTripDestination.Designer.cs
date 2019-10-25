@@ -4,14 +4,16 @@ using MatrackApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MatrackApi.Migrations
 {
     [DbContext(typeof(MatrackApiDbContext))]
-    partial class MatrackApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191024151612_AddTripDestination")]
+    partial class AddTripDestination
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -173,7 +175,7 @@ namespace MatrackApi.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("DepartureStageId")
+                    b.Property<int?>("DestinationStageId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("LastTripStateTime")
@@ -199,7 +201,7 @@ namespace MatrackApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DepartureStageId");
+                    b.HasIndex("DestinationStageId");
 
                     b.HasIndex("VehicleId");
 
@@ -322,9 +324,9 @@ namespace MatrackApi.Migrations
 
             modelBuilder.Entity("MaTrack.Core.Entities.TripEntity", b =>
                 {
-                    b.HasOne("MaTrack.Core.Entities.StageEntity", "DepartureStage")
+                    b.HasOne("MaTrack.Core.Entities.StageEntity", "DestinationStage")
                         .WithMany()
-                        .HasForeignKey("DepartureStageId");
+                        .HasForeignKey("DestinationStageId");
 
                     b.HasOne("MaTrack.Core.Entities.VehicleEntity", "Vehicle")
                         .WithMany()

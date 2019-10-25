@@ -1,5 +1,6 @@
 ﻿using MaTrack.Core.Dtos;
 using MaTrack.Core.Entities;
+using MaTrack.Shared.Dialogs;
 using MaTrack.Shared.Services;
 using Newtonsoft.Json;
 using System;
@@ -26,8 +27,17 @@ namespace MaTrack.Shared.Pages
         {
             this.InitializeComponent();
             _httpClientService = new HttpClientService();
-            
+            listAdmins.SelectionChanged += ListAdmins_SelectionChanged;
         }
+
+        private async void ListAdmins_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedAdmin = e.AddedItems.Last() as AdminEntity;
+            var setStageDialog = new SetStageDialog(_userAuthDto, selectedAdmin);
+            await setStageDialog.InitializeAsync();
+            await setStageDialog.ShowAsync();
+        }
+
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             _userAuthDto = JsonConvert.DeserializeObject<UserAuthDto>(e.Parameter as string);

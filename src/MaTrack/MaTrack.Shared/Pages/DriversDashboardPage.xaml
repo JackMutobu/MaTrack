@@ -5,10 +5,22 @@
     xmlns:local="using:MaTrack.Shared.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
-    <Grid>
-        <TextBlock Text="Drivers dashboard"/>
+    <Grid Background="{StaticResource GrayDarkBrush}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <CommandBar Content="Driver" FontWeight="Normal"></CommandBar>
+        <Grid Grid.Row="1" Padding="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Tracking"/>
+            <ToggleSwitch x:Name="BtnTracking" VerticalAlignment="Top" Grid.Column="1"/>
+            <Button Click="BtnSearch_Click" Content="Test Connection" />
+        </Grid>
     </Grid>
 </Page>

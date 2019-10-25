@@ -67,7 +67,7 @@
                             <TextBlock Grid.Row="0" VerticalAlignment="Center" Foreground="{StaticResource WhiteCustomBrush}"  HorizontalAlignment="Center" Grid.Column="2">
                     <Run Text="{Binding NumberOfTrip,FallbackValue=9}"/>
                     <Run Text=" "/>
-                    <Run Text="tours"/>
+                    <Run Text="trips"/>
                             </TextBlock>
                             <TextBlock Grid.Row="1" VerticalAlignment="Center" Foreground="{StaticResource WhiteCustomBrush}"  HorizontalAlignment="Center" Grid.Column="2">
                     <Run Text="ksh." FontWeight="SemiBold"/>

@@ -8,10 +8,8 @@
     mc:Ignorable="d"
     Title="Date"
     PrimaryButtonText="Confirm"
-    SecondaryButtonText=""
-    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     CloseButtonText="Cancel"
-    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick">
 
     <Grid>
         <DatePicker x:Name="DatePickerControl"/>

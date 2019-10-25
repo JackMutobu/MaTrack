@@ -8,6 +8,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Xamarin.Essentials;
 using MaTrack.Core.Dtos;
+using MaTrack.Shared.Dialogs;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -27,9 +28,17 @@ namespace MaTrack.Shared.Pages
             this.InitializeComponent();
             _httpClientService = new HttpClientService();
             BtnMyLocation.Click += BtnMyLocation_Click;
+            BtnPickLocation.Click += BtnPickLocation_Click;
             BtnAddStage.Click += BtnAddStage_Click;
             progressBar.Visibility = Visibility.Collapsed;
         }
+
+        private async void BtnPickLocation_Click(object sender, RoutedEventArgs e)
+        {
+            MapsDialog maps = new MapsDialog();
+            await maps.ShowAsync();
+        }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             _userAuthDto = JsonConvert.DeserializeObject<UserAuthDto>(e.Parameter as string);

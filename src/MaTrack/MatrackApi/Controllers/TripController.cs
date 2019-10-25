@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using MaTrack.Core.Data.Repositories;
 using MaTrack.Core.Entities;
@@ -23,7 +24,7 @@ namespace MatrackApi.Controllers
         {
             try
             {
-                var trips = _repository.GetAll();
+                var trips = _repository.GetAll().ToList();
                 var tripsWithIncude = new List<TripEntity>();
                 foreach (var trip in trips)
                 {
@@ -37,6 +38,12 @@ namespace MatrackApi.Controllers
                 return BadRequest(ex.Message);
             }
 
+        }
+        [HttpGet("tripStateFor/{vehicleId}")]
+        public IActionResult GetTripState(int vehicleId)
+        {
+            var trip = _repository.GetAll().OrderByDescending(x => x.LastTripStateTime).FirstOrDefault(t => t.VehicleId == vehicleId);
+            return Ok(trip);
         }
     }
 }

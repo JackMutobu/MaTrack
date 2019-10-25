@@ -4,6 +4,7 @@ using MaTrack.Shared.Data.Repositories;
 using MatrackApi.Data;
 using MatrackApi.Data.Repositories;
 using MatrackApi.Helpers;
+using MatrackApi.Hubs;
 using MatrackApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -45,6 +46,7 @@ namespace MatrackApi
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
             services.AddRazorPages();
+            services.AddSignalR();
             // configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
@@ -97,6 +99,7 @@ namespace MatrackApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostEnvironment env)
         {
+            UpdateDatabase(app);
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -131,9 +134,22 @@ namespace MatrackApi
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapHub<TrackHub>("/trackHub");
             });
 
            
+        }
+        private static void UpdateDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices
+                .GetRequiredService<IServiceScopeFactory>()
+                .CreateScope())
+            {
+                using (var context = serviceScope.ServiceProvider.GetService<MatrackApiDbContext>())
+                {
+                    context.Database.Migrate();
+                }
+            }
         }
     }
 }

@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <CommandBar Content="Departures" FontWeight="Normal"/>
+        <CommandBar Content="Arrivals" FontWeight="Normal"/>
         <Grid Padding="5,10" Background="{StaticResource VioletSecondaryBrush}" Grid.Row="1" Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition/>

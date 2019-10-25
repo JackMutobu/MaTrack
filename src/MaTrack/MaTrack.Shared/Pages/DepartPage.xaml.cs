@@ -20,6 +20,7 @@ namespace MaTrack.Shared.Pages
     {
         private UserAuthDto _userAuthDto;
         private string _userAuthDtoJson;
+        private AdminEntity _adminEntity;
         private List<TripEntity> _trips;
         private IHttpClientService _httpClientService;
         public DepartPage()
@@ -38,17 +39,18 @@ namespace MaTrack.Shared.Pages
                 var selectedDeparture = e.AddedItems.Last() as TripEntity;
                 selectedDeparture.TripState = Core.Enumerations.TripState.Arrival;
                 selectedDeparture.Vehicle = null;
+                selectedDeparture.DepartureStageId = _adminEntity.StageId;
                 selectedDeparture.LastTripStateTime = DateTime.Now;
                 var reponse = await _httpClientService.PutAsync(selectedDeparture, "Trip/update");
                 if (reponse.IsSuccessStatusCode)
                 {
                     _trips.Remove(selectedDeparture);
-                    listDepartures.ItemsSource = _trips;
+                    listDepartures.ItemsSource = _trips.Where(x => x.TripState == Core.Enumerations.TripState.Departure && x.UploadDate.Date == DateTime.Now.Date); ;
                 }
             }
             catch(Exception ex)
             {
-                listDepartures.ItemsSource = _trips.Where(x => x.TripState == Core.Enumerations.TripState.Departure && x.UploadDate == DateTime.Today); ;
+                //listDepartures.ItemsSource = _trips.Where(x => x.TripState == Core.Enumerations.TripState.Departure && x.UploadDate == DateTime.Today); ;
             }
 
         }
@@ -65,8 +67,10 @@ namespace MaTrack.Shared.Pages
             try
             {
                 _httpClientService.SetAuthorizationHeaderToken(_httpClientService.HttpClient, _userAuthDto.Token);
+                _adminEntity = JsonConvert.DeserializeObject<AdminEntity>(await _httpClientService.GetAsync($"Admin/getbyphone/{_userAuthDto.Phone}"));
                 _trips = JsonConvert.DeserializeObject<List<TripEntity>>(await _httpClientService.GetAsync("Trip/getallwith"));
-                listDepartures.ItemsSource = _trips.Where(x=> x.TripState == Core.Enumerations.TripState.Departure && x.UploadDate == DateTime.Today);
+                var departuresTrip = _trips.Where(x => x.TripState == Core.Enumerations.TripState.Departure && x.UploadDate.Date == DateTime.Now.Date);
+                listDepartures.ItemsSource = departuresTrip;
             }
             catch (Exception ex)
             {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using MaTrack.Core.Entities;
 using MaTrack.Shared.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +22,7 @@ namespace MatrackApi.Controllers
         {
             try
             {
-                var vehicles = _repository.GetAll();
+                var vehicles = _repository.GetAll().ToList();
                 var vehiclesWithIncude = new List<VehicleEntity>();
                 foreach (var vehicle in vehicles)
                 {
